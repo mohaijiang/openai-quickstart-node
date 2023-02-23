@@ -20,6 +20,14 @@
   color: #353740;
   font-family: "ColfaxAI", Helvetica, sans-serif;
 }
+.main textarea {
+  font-size: 16px;
+  line-height: 24px;
+  color: #353740;
+  font-family: "ColfaxAI", Helvetica, sans-serif;
+  width: 600px;
+  height: 600px;
+}
 .main {
   display: flex;
   flex-direction: column;

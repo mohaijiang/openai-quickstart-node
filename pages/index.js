@@ -42,16 +42,16 @@ export default function Home() {
         <img src="/dog.png" className={styles.icon} />
         <h3>Name my pet</h3>
         <form onSubmit={onSubmit}>
-          <input
-            type="text"
+          <textarea
             name="animal"
             placeholder="Enter an animal"
             value={animalInput}
             onChange={(e) => setAnimalInput(e.target.value)}
           />
+          <br/>
           <input type="submit" value="Generate names" />
         </form>
-        <div className={styles.result}>{result}</div>
+        <textarea className={styles.result} readOnly={true} value={result}></textarea>
       </main>
     </div>
   );

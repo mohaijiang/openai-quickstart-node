@@ -26,12 +26,23 @@ export default async function (req, res) {
   }
 
   try {
+    // const completion = await openai.createCompletion({
+    //   model: "text-davinci-003",
+    //   prompt: generatePrompt(animal),
+    //   temperature: 0.6,
+    // });
     const completion = await openai.createCompletion({
-      model: "text-davinci-003",
+      model: "code-davinci-002",
       prompt: generatePrompt(animal),
-      temperature: 0.6,
+      temperature: 0,
+      max_tokens: 182,
+      top_p: 1.0,
+      frequency_penalty: 0.0,
+      presence_penalty: 0.0,
+      stop: ["###"],
     });
     res.status(200).json({ result: completion.data.choices[0].text });
+    // res.status(200).json({result: "success"})
   } catch(error) {
     // Consider adjusting the error handling logic for your use case
     if (error.response) {
@@ -51,12 +62,12 @@ export default async function (req, res) {
 function generatePrompt(animal) {
   const capitalizedAnimal =
     animal[0].toUpperCase() + animal.slice(1).toLowerCase();
-  return `Suggest three names for an animal that is a superhero.
 
-Animal: Cat
-Names: Captain Sharpclaw, Agent Fluffball, The Incredible Feline
-Animal: Dog
-Names: Ruff the Protector, Wonder Canine, Sir Barks-a-Lot
-Animal: ${capitalizedAnimal}
-Names:`;
+  return `
+ 
+${capitalizedAnimal}
+  
+### Security risk with above code
+`;
+
 }
